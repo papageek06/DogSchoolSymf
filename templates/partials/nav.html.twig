@@ -1,0 +1,87 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+	<div class="container">
+		<a class="navbar-brand d-flex align-items-center" href="#">
+			{% if asset('images/logo.webp') is defined %}
+				<img src="{{ asset('images/logo.webp') }}" alt="DogSchool" class="me-2" style="height: 32px;">
+			{% else %}
+				<i class="fas fa-dog text-primary me-2 fs-4"></i>
+			{% endif %}
+			<span class="fw-bold">DogSchool</span>
+		</a>
+
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div
+			class="collapse navbar-collapse " id="navbarSupportedContent">
+			<!-- Menu principal -->
+			<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+				{% set page = app.request.attributes.get('_route') %}
+
+				<li class="nav-item">
+					<a class="nav-link {% if page == 'app_home' %}active{% endif %}" href="{{ path('app_home') }}">
+						Accueil
+					</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link {% if page == 'app_service_index' %}active{% endif %}" href="{{ path('app_service_index') }}">
+						Services
+					</a>
+				</li>
+
+
+				<li class="nav-item">
+					<a class="nav-link {% if page == 'app_entreprise' %}active{% endif %}" href="{{ path('app_entreprise') }}">
+						À propos
+					</a>
+				</li>
+
+
+				{# À décommenter quand la route 'app_contact' existera
+								    <li class="nav-item">
+								        <a class="nav-link {% if page == 'app_contact' %}active{% endif %}" href="{{ path('app_contact') }}">
+								            Contact
+								        </a>
+								    </li>
+								    #}
+			</ul>
+
+
+			<!-- Espace utilisateur -->
+			<ul class="navbar-nav ms-3">
+				{% if app.user %}
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarUserDropdown" role="button" data-bs-toggle="dropdown">
+							<i class="fas fa-user-circle me-1"></i>
+							{{ app.user.username }}
+						</a>
+						<ul class="dropdown-menu dropdown-menu-end">
+							<li>
+								<a class="dropdown-item" href="#">
+									<i class="fas fa-tachometer-alt me-2"></i>Tableau de bord</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#">
+									<i class="fas fa-user me-2"></i>Profil</a>
+							</li>
+							<li><hr class="dropdown-divider"></li>
+							<li>
+								<a class="dropdown-item text-danger" href="#">
+									<i class="fas fa-sign-out-alt me-2"></i>Déconnexion</a>
+							</li>
+						</ul>
+					</li>
+				{% else %}
+					<li class="nav-item">
+						<a class="nav-link" href="#">Connexion</a>
+					</li>
+					<li class="nav-item">
+						<a class="btn btn-primary ms-2" href="#">Inscription</a>
+					</li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+</nav>

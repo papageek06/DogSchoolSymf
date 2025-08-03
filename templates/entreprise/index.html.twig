@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EntrepriseController!{% endblock %}
+
+{% block body %}
+<section class="py-5 bg-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="h2 fw-bold text-dark">Votre éducateur canin à Lille</h2>
+                <h3 class="h5 text-primary-600">Christian Longmar</h3>
+
+                <p class="text-muted">
+                    <strong>Passionné par le monde canin</strong> depuis mon plus jeune âge, j'ai grandi dans un environnement où <strong>le chien occupait une place centrale</strong>. Accompagnant mon père, maître-chien professionnel, j’ai acquis une <strong>expérience concrète et terrain</strong> en éducation canine dès l'enfance.
+                </p>
+
+                <p class="text-muted">
+                    Ces premières années ont été déterminantes et m'ont donné l'envie de transmettre mes connaissances. Fort de mes <strong>expériences personnelles</strong> et de ma <strong>formation professionnelle</strong>, je vous propose aujourd’hui un <strong>accompagnement personnalisé</strong> pour vous aider à construire une relation équilibrée et harmonieuse avec votre compagnon à quatre pattes.
+                </p>
+
+                <h4 class="h6 text-primary-600 mt-4 mb-2">Avec moi, vous apprendrez à :</h4>
+                <ul class="text-muted ps-4 mb-4">
+                    <li>Comprendre les <strong>besoins fondamentaux de votre chien</strong> et y répondre efficacement</li>
+                    <li>Résoudre les <strong>troubles comportementaux</strong> : anxiété, agressivité, aboiements excessifs</li>
+                    <li>Créer un <strong>lien de confiance fort et durable</strong> avec votre animal</li>
+                </ul>
+
+                <p class="text-muted">
+                    <strong>Mon objectif :</strong> vous permettre de vivre une <strong>relation de complicité</strong> et de respect mutuel avec votre chien, chaque jour.
+                </p>
+
+                <div class="row text-center mt-4">
+                    {# <div class="col">
+                        <h3 class="text-primary-600 fw-bold">500+</h3>
+                        <p class="text-muted">Chiens éduqués</p>
+                    </div> #}
+                    <div class="col">
+                        <h3 class="text-primary-600 fw-bold">20 ans</h3>
+                        <p class="text-muted">d'expérience</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 justify-content-center d-flex">
+            <img src="{{ asset('images/christ-admin.webp') }}" alt="Christian Longmar - Educateur canin" class="img-fluid rounded shadow-sm w-50 ">
+                <div class="bg-light rounded p-5 text-center">
+                    <i class="fas fa-history fa-3x text-primary-600 mb-3"></i>
+                    <h3 class="h5">Une expertise reconnue</h3>
+                    <p class="text-muted">Depuis plus de 8 ans, j'accompagne les maîtres et leurs chiens à Lille, Roubaix, Tourcoing et dans toute la région Hauts-de-France.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

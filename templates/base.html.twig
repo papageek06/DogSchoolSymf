@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}DogSchool - Éducation canine à Lille (Nord){% endblock %}</title>
+    
+    <meta name="description" content="{% block meta_description %}DogSchool propose des cours d'éducation canine à Lille dans le Nord : dressage, comportement, agility, et plus.{% endblock %}">
+    <meta name="keywords" content="éducation canine Lille, dressage de chien, éducateur canin Nord, comportementaliste chien, agility chien, DogSchool">
+    <meta name="author" content="DogSchool">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="{{ asset('images/logo.webp') }}" />
+
+    <!-- Open Graph pour réseaux sociaux -->
+    <meta property="og:title" content="DogSchool - Éducation canine à Lille" />
+    <meta property="og:description" content="Dressage, éducation et comportement canin à Lille. Découvrez DogSchool, votre spécialiste de la relation homme-chien dans le Nord." />
+    <meta property="og:image" content="{{ asset('images/logo.webp') }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:url" content="{{ app.request.uri }}" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="DogSchool - Éducation canine à Lille" />
+    <meta name="twitter:description" content="Dressage de chien à Lille et alentours : chiots, adultes, comportement et agility." />
+    <meta name="twitter:image" content="{{ asset('images/logo.webp') }}" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+</head>
+
+<body class="bg-primary bg-opacity-10">
+
+    {# Barre de navigation Bootstrap #}
+    {% include 'partials/nav.html.twig' %}
+
+    {# Messages flash Symfony #}
+    <div class="container mt-3">
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+
+    {# Contenu principal des pages #}
+    <main class="">
+        {% block body %}{% endblock %}
+    </main>
+
+    {# Pied de page Bootstrap #}
+    {% include 'partials/footer.html.twig' %}
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</body>
+</html>

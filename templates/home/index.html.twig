@@ -1,0 +1,161 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - DogSchool{% endblock %}
+
+{% block body %}
+
+<!-- Hero Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center gy-5">
+            <div class="col-lg-6">
+                <h1 class="display-5 fw-bold mb-4">"Des chiens heureux, des maîtres épanouis."</h1>
+                <p class="lead mb-4">
+                    Votre chien est un membre à part entière de votre famille. Chez DogSchool, nous croyons fermement
+                    que la clé de votre relation réside dans la communication, la bienveillance et la joie.<br><br>
+                    Apprenez à communiquer avec votre chien.
+                </p>
+                <div class="d-flex flex-column flex-sm-row gap-3">
+                    <a href="#" class="btn btn-outline-primary btn-lg">Découvrir nos services</a>
+                    <a href="#" class="btn btn-primary btn-lg">Nous contacter</a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img src="{{ asset('images/Dog School  L’Education du chien.webp') }}" class="img-fluid rounded" alt="Formation certifiée">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Preview -->
+<section class="py-5 bg-white">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-3">Nos Services d'Éducation</h2>
+        <p class="text-muted mb-5">
+            Des solutions adaptées à chaque chien et à chaque maître.
+            Nous vous accompagnons dans l'éducation de votre compagnon.
+        </p>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 64px; height: 64px;">
+                            <i class="fas fa-graduation-cap text-primary fs-4"></i>
+                        </div>
+                        <h5 class="card-title">Leçon Individuelle</h5>
+                        <p class="card-text text-muted">
+                            Pour les chiens de toutes races. Quelles que soient les difficultés, nous trouvons la solution adaptée.
+                            À domicile ou en extérieur.
+                        </p>
+                        <a href="#" class="text-primary fw-semibold">En savoir plus →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 64px; height: 64px;">
+                            <i class="fas fa-brain text-primary fs-4"></i>
+                        </div>
+                        <h5 class="card-title">Éducation Avancée</h5>
+                        <p class="card-text text-muted">
+                            Perfectionnez l'obéissance et développez les compétences de votre chien.
+                        </p>
+                        <a href="#" class="text-primary fw-semibold">En savoir plus →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 64px; height: 64px;">
+                            <i class="fas fa-dog text-primary fs-4"></i>
+                        </div>
+                        <h5 class="card-title">Chiot</h5>
+                        <p class="card-text text-muted">
+                            Offrez à votre chiot les meilleures bases : 1 mois intensif suivi d’un accompagnement sur 1 an.
+                        </p>
+                        <a href="#" class="text-primary fw-semibold">En savoir plus →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pourquoi nous choisir -->
+<section class="py-5 bg-light">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-3">Pourquoi nous choisir ?</h2>
+        <p class="text-muted mb-5">
+            Notre expertise et notre passion font de nous votre partenaire de confiance.
+        </p>
+        <div class="row g-4">
+            {% set features = [
+                {'icon': 'certificate', 'title': 'Certifiés', 'desc': 'Nos éducateurs sont diplômés et certifiés'},
+                {'icon': 'users', 'title': 'Expérimentés', 'desc': 'Plus de 10 ans d’expérience'},
+                {'icon': 'heart', 'title': 'Passionnés', 'desc': 'Nous aimons les chiens et leur bien-être'},
+                {'icon': 'clock', 'title': 'Flexibles', 'desc': 'Cours disponibles semaine & week-end'}
+            ] %}
+            {% for item in features %}
+                <div class="col-md-3">
+                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 48px; height: 48px;">
+                        <i class="fas fa-{{ item.icon }} text-white"></i>
+                    </div>
+                    <h5>{{ item.title }}</h5>
+                    <p class="text-muted small">{{ item.desc }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Témoignages -->
+<section class="py-5 bg-white">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-5">Ce que disent nos clients</h2>
+        <div class="row g-4">
+            {% set testimonials = [
+                {'initial': 'M', 'name': 'Patricia', 'dog': 'Anouk', 'msg': "Grâce à DogSchool, mon chien Anouk a appris l'obéissance de base en seulement quelques semaines. Les éducateurs sont professionnels et patients."},
+                {'initial': 'P', 'name': 'Nelly', 'dog': 'Titus', 'msg': "L'équipe de DogSchool a su résoudre les problèmes de comportement de mon chien. Je recommande vivement leurs services !"},
+                {'initial': 'S', 'name': 'Sophie', 'dog': 'Max', 'msg': "Cours pour chiot excellents ! Mon chien adore et moi aussi. L'ambiance est super et les progrès sont visibles rapidement."}
+            ] %}
+            {% for t in testimonials %}
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <div class="text-warning mb-3">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="text-muted mb-4">{{ t.msg }}</p>
+                            <div class="d-flex align-items-center">
+                                <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                    {{ t.initial }}
+                                </div>
+                                <div class="text-start">
+                                    <div class="fw-semibold">{{ t.name }}</div>
+                                    <small class="text-muted">Propriétaire de {{ t.dog }}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5 bg-primary text-white text-center">
+    <div class="container">
+        <h2 class="fw-bold mb-3">Prêt à commencer l'éducation de votre chien ?</h2>
+        <p class="mb-4 text-white-50">Rejoignez-nous et donnez à votre chien l'éducation qu'il mérite.</p>
+        <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
+            <a href="#" class="btn btn-light btn-lg text-primary">Réserver un cours</a>
+            <a href="#" class="btn btn-outline-light btn-lg">Créer un compte</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

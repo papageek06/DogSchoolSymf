@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Service index{% endblock %}
+
+{% block body %}
+<section class="py-5 bg-primary text-white text-center">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-3">
+            Nos Services d'Éducation
+        </h1>
+        <p class="lead text-white-50 mx-auto" style="max-width: 800px;">
+            Découvrez notre gamme complète de services d'éducation canine, 
+            adaptés à tous les niveaux et à tous les besoins.
+        </p>
+    </div>
+</section>
+
+<section class="py-5 bg-white">
+    <div class="container">
+        <div class="row g-4">
+            {% for service in services %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="rounded-4 p-4 shadow-sm h-100 {{ service.backgroundColor }}">
+                        <div class="text-center mb-4">
+                            {% if service.icon %}
+                                <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3"
+                                     style="width: 64px; height: 64px; background: rgba(0,0,0,0.05);">
+                                    <i class="fas {{ service.icon.iconClass }} fs-4 {{ service.textColor }}"></i>
+                                </div>
+                            {% endif %}
+                            <h3 class="h5 fw-bold {{ service.textColor }}">{{ service.title }}</h3>
+                        </div>
+
+                        <p class="text-muted small text-center mb-4">{{ service.description}}</p>
+
+                        {% if service.features is defined and service.features|length > 0 %}
+                            <ul class="list-unstyled small mb-4">
+                                {% for feature in service.features %}
+                                    <li class="d-flex align-items-center mb-2">
+                                        <i class="fas fa-check text-success me-2"></i>
+                                        {{ feature.title }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+
+                        <div class="text-center mt-auto">
+                            <div class="h4 fw-bold text-primary mb-1">{{ service.price|number_format(2, ',', ' ') }}€</div>
+                            <div class="text-muted small mb-3">{{ service.duration }}</div>
+                            <a href="#" class="btn {{ service.buttonColor }}">{{ service.isFeatured ? 'Réserver' : 'En savoir plus' }}</a>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <p class="text-center">Aucun service disponible pour le moment.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
