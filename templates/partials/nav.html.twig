@@ -67,17 +67,17 @@
 							</li>
 							<li><hr class="dropdown-divider"></li>
 							<li>
-								<a class="dropdown-item text-danger" href="#">
+								<a class="dropdown-item text-danger" href="{{path('app_logout')}}">
 									<i class="fas fa-sign-out-alt me-2"></i>Déconnexion</a>
 							</li>
 						</ul>
 					</li>
 				{% else %}
 					<li class="nav-item">
-						<a class="nav-link" href="#">Connexion</a>
+						<a class="nav-link" href="{{ path('app_login')}}">Connexion</a>
 					</li>
 					<li class="nav-item">
-						<a class="btn btn-primary ms-2" href="#">Inscription</a>
+						<a class="btn btn-primary ms-2" href="{{ path('app_register') }}">Inscription</a>
 					</li>
 				{% endif %}
 			</ul>

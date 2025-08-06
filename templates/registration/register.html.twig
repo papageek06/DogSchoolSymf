@@ -1,0 +1,178 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription | DogSchool
+{% endblock %}
+
+{% block body %}
+	<section class="py-5 bg-primary-600 text-white text-center">
+		<div class="container">
+			<h1 class="display-4 fw-bold">Créer un compte</h1>
+			<p class="lead text-primary-100">Rejoignez notre communauté DogSchool et éduquez votre chien en toute confiance.</p>
+		</div>
+	</section>
+
+	<section class="py-5 bg-white">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-8">
+					{{ form_start(registrationForm) }}
+
+					<div class="mb-3">
+						{{ form_label(registrationForm.firstName) }}
+						{{ form_widget(registrationForm.firstName, { attr: { class: 'form-control' } }) }}
+						{{ form_errors(registrationForm.firstName) }}
+					</div>
+
+					<div class="mb-3">
+						{{ form_label(registrationForm.email) }}
+						{{ form_widget(registrationForm.email, { attr: { class: 'form-control' } }) }}
+						{{ form_errors(registrationForm.email) }}
+					</div>
+
+					<div class="mb-3">
+						{{ form_label(registrationForm.plainPassword.first) }}
+						{{ form_widget(registrationForm.plainPassword.first, { attr: { id: 'plainPasswordInput', class: 'form-control' } }) }}
+
+
+
+						{{ form_errors(registrationForm.plainPassword.first) }}
+						<small id="passwordHelp" class="form-text text-muted"></small>
+						<div class="progress mt-2" style="height: 10px;">
+							<div id="passwordStrengthBar" class="progress-bar" role="progressbar" style="width: 0%"></div>
+						</div>
+					</div>
+
+					<div class="mb-3">
+						{{ form_label(registrationForm.plainPassword.second) }}
+						{{ form_widget(registrationForm.plainPassword.second, { attr: { class: 'form-control' } }) }}
+						{{ form_errors(registrationForm.plainPassword.second) }}
+					</div>
+
+
+					<div class="mb-3">
+						{{ form_label(registrationForm.birthDate) }}
+						{{ form_widget(registrationForm.birthDate, { attr: { class: 'form-control' } }) }}
+						{{ form_errors(registrationForm.birthDate) }}
+					</div>
+
+					<div class="mb-3">
+						{{ form_label(registrationForm.phoneNumber) }}
+						{{ form_widget(registrationForm.phoneNumber, { attr: { class: 'form-control' } }) }}
+						{{ form_errors(registrationForm.phoneNumber) }}
+					</div>
+
+					<div class="mb-3">
+						{{ form_label(registrationForm.address) }}
+						{{ form_widget(registrationForm.address, { attr: { class: 'form-control' } }) }}
+						{{ form_errors(registrationForm.address) }}
+					</div>
+
+					<div class="mb-3">
+						{{ form_label(registrationForm.city) }}
+						{{ form_widget(registrationForm.city, { attr: { class: 'form-control' } }) }}
+						{{ form_errors(registrationForm.city) }}
+					</div>
+
+					<div class="mb-3">
+						{{ form_label(registrationForm.postalCode) }}
+						{{ form_widget(registrationForm.postalCode, { attr: { class: 'form-control' } }) }}
+						{{ form_errors(registrationForm.postalCode) }}
+					</div>
+
+					<div class="mb-3">
+						{{ form_label(registrationForm.picture) }}
+						{{ form_widget(registrationForm.picture, { attr: { class: 'form-control' } }) }}
+						{{ form_errors(registrationForm.picture) }}
+					</div>
+
+					<div class="form-check mb-3">
+						{{ form_widget(registrationForm.agreeTerms, { attr: { class: 'form-check-input' } }) }}
+						{{ form_label(registrationForm.agreeTerms, null, { label_attr: { class: 'form-check-label' } }) }}
+						{{ form_errors(registrationForm.agreeTerms) }}
+					</div>
+
+					<button type="submit" class="btn btn-primary w-100">
+						<i class="fas fa-user-plus me-2"></i>Créer mon compte
+					</button>
+
+					{{ form_end(registrationForm) }}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script>
+document.addEventListener("DOMContentLoaded", function () {
+	console.log("DOM chargé");
+
+	const passwordInput = document.getElementById("registration_form_plainPassword_first");
+	const helpText = document.getElementById("passwordHelp");
+	const strengthBar = document.getElementById("passwordStrengthBar");
+
+	if (!passwordInput) {
+		console.error("Champ mot de passe non trouvé : vérifie l'ID dans le DOM !");
+		return;
+	}
+
+	passwordInput.addEventListener("input", function () {
+		const value = passwordInput.value;
+		console.log("Mot de passe saisi :", value);
+
+		let strength = 0;
+
+		if (value.length >= 6) {
+			strength++;
+			console.log("✔ Longueur >= 6");
+		}
+		if (/[A-Z]/.test(value)) {
+			strength++;
+			console.log("✔ Contient une majuscule");
+		}
+		if (/[0-9]/.test(value)) {
+			strength++;
+			console.log("✔ Contient un chiffre");
+		}
+		if (/[^A-Za-z0-9]/.test(value)) {
+			strength++;
+			console.log("✔ Contient un caractère spécial");
+		}
+
+		let color = '';
+		let message = '';
+		let width = '0%';
+
+		switch (strength) {
+			case 0:
+			case 1:
+				color = 'bg-danger';
+				message = 'Mot de passe trop faible';
+				width = '25%';
+				break;
+			case 2:
+				color = 'bg-warning';
+				message = 'Mot de passe moyen';
+				width = '50%';
+				break;
+			case 3:
+				color = 'bg-info';
+				message = 'Mot de passe acceptable';
+				width = '75%';
+				break;
+			case 4:
+				color = 'bg-success';
+				message = 'Mot de passe sécurisé';
+				width = '100%';
+				break;
+		}
+
+		console.log("Force :", strength, "| Message :", message, "| Couleur :", color);
+
+		strengthBar.className = 'progress-bar ' + color;
+		strengthBar.style.width = width;
+		helpText.innerText = message;
+	});
+});
+</script>
+
+
+{% endblock %}
