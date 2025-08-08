@@ -16,8 +16,8 @@
                     Apprenez à communiquer avec votre chien.
                 </p>
                 <div class="d-flex flex-column flex-sm-row gap-3">
-                    <a href="#" class="btn btn-outline-primary btn-lg">Découvrir nos services</a>
-                    <a href="#" class="btn btn-primary btn-lg">Nous contacter</a>
+                    <a href="{{path('app_service_index')}}" class="btn btn-outline-primary btn-lg">Découvrir nos services</a>
+                    <a href="{{path('app_contact')}}" class="btn btn-primary btn-lg">Nous contacter</a>
                 </div>
             </div>
             <div class="col-lg-6 text-center">
@@ -47,7 +47,7 @@
                             Pour les chiens de toutes races. Quelles que soient les difficultés, nous trouvons la solution adaptée.
                             À domicile ou en extérieur.
                         </p>
-                        <a href="#" class="text-primary fw-semibold">En savoir plus →</a>
+                        <a href="{{path('app_service_index')}}" class="text-primary fw-semibold">En savoir plus →</a>
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                         <p class="card-text text-muted">
                             Perfectionnez l'obéissance et développez les compétences de votre chien.
                         </p>
-                        <a href="#" class="text-primary fw-semibold">En savoir plus →</a>
+                        <a href="{{path('app_service_index')}}" class="text-primary fw-semibold">En savoir plus →</a>
                     </div>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                         <p class="card-text text-muted">
                             Offrez à votre chiot les meilleures bases : 1 mois intensif suivi d’un accompagnement sur 1 an.
                         </p>
-                        <a href="#" class="text-primary fw-semibold">En savoir plus →</a>
+                        <a href="{{path('app_service_index')}}" class="text-primary fw-semibold">En savoir plus →</a>
                     </div>
                 </div>
             </div>
@@ -118,7 +118,7 @@
             {% set testimonials = [
                 {'initial': 'M', 'name': 'Patricia', 'dog': 'Anouk', 'msg': "Grâce à DogSchool, mon chien Anouk a appris l'obéissance de base en seulement quelques semaines. Les éducateurs sont professionnels et patients."},
                 {'initial': 'P', 'name': 'Nelly', 'dog': 'Titus', 'msg': "L'équipe de DogSchool a su résoudre les problèmes de comportement de mon chien. Je recommande vivement leurs services !"},
-                {'initial': 'S', 'name': 'Sophie', 'dog': 'Max', 'msg': "Cours pour chiot excellents ! Mon chien adore et moi aussi. L'ambiance est super et les progrès sont visibles rapidement."}
+                {'initial': 'S', 'name': 'Jean luc', 'dog': 'Saly', 'msg': "Cours pour chiot excellents ! Ma chienne Saly se sent bien dans ses pattes et pour ma part je suis plus confiant. Merci à Christian pour sa patience ."}
             ] %}
             {% for t in testimonials %}
                 <div class="col-md-4">
@@ -152,8 +152,8 @@
         <h2 class="fw-bold mb-3">Prêt à commencer l'éducation de votre chien ?</h2>
         <p class="mb-4 text-white-50">Rejoignez-nous et donnez à votre chien l'éducation qu'il mérite.</p>
         <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
-            <a href="#" class="btn btn-light btn-lg text-primary">Réserver un cours</a>
-            <a href="#" class="btn btn-outline-light btn-lg">Créer un compte</a>
+            <a href="{{path('app_service_index')}}" class="btn btn-light btn-lg text-primary">Réserver un cours</a>
+            <a href="{{path('app_register')}}" class="btn btn-outline-light btn-lg">Créer un compte</a>
         </div>
     </div>
 </section>

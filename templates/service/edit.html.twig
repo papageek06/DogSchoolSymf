@@ -3,11 +3,90 @@
 {% block title %}Edit Service{% endblock %}
 
 {% block body %}
-    <h1>Edit Service</h1>
+{{ form_start(form, {'attr': {'class': 'row g-3'}}) }}
 
-    {{ include('service/_form.html.twig', {'button_label': 'Update'}) }}
+    <div class="col-md-6">
+        {{ form_label(form.title) }}
+        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.title) }}
+    </div>
 
-    <a href="{{ path('app_service_index') }}">back to list</a>
+    <div class="col-md-6">
+        {{ form_label(form.duration) }}
+        {{ form_widget(form.duration, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.duration) }}
+    </div>
 
-    {{ include('service/_delete_form.html.twig') }}
+    <div class="col-md-12">
+        {{ form_label(form.description) }}
+        {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.description) }}
+    </div>
+
+    <div class="col-md-4">
+        {{ form_label(form.price) }}
+        {{ form_widget(form.price, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.price) }}
+    </div>
+
+    <div class="col-md-4">
+        {{ form_label(form.backgroundColor) }}
+        {{ form_widget(form.backgroundColor, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.backgroundColor) }}
+    </div>
+
+    <div class="col-md-4">
+        {{ form_label(form.textColor) }}
+        {{ form_widget(form.textColor, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.textColor) }}
+    </div>
+
+    <div class="col-md-4">
+        {{ form_label(form.buttonColor) }}
+        {{ form_widget(form.buttonColor, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.buttonColor) }}
+    </div>
+
+    <div class="col-md-4">
+        {{ form_label(form.createdAt) }}
+        {{ form_widget(form.createdAt, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.createdAt) }}
+    </div>
+
+    <div class="col-md-4">
+        {{ form_label(form.updatedAt) }}
+        {{ form_widget(form.updatedAt, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.updatedAt) }}
+    </div>
+
+    <div class="col-md-12">
+        {{ form_label(form.isFeatured) }}
+        <div class="form-check">
+            {{ form_widget(form.isFeatured, {'attr': {'class': 'form-check-input'}}) }}
+            {{ form_errors(form.isFeatured) }}
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <label class="form-label d-block">Icône</label>
+        <div class="d-flex flex-wrap gap-3">
+            {% for child in form.icon %}
+                <label class="form-check-label text-center" style="width: 70px;">
+                    {{ form_widget(child) }}
+                    <div class="border rounded p-2 bg-light">
+                        <i class="fas {{ child.vars.label }} fa-2x"></i>
+                    </div>
+                </label>
+            {% endfor %}
+        </div>
+        {{ form_errors(form.icon) }}
+    </div>
+
+    <div class="col-md-12 mt-4">
+        <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+    </div>
+
+{{ form_end(form) }}
+
+    
 {% endblock %}

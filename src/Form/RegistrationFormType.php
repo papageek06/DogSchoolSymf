@@ -41,11 +41,11 @@ class RegistrationFormType extends AbstractType
             ->add('plainPassword', RepeatedType::class, [
     'type' => PasswordType::class,
     'first_options' => [
-        'label' => 'Mot de passe',
+        'label' => 'Mot de passe*',
         'attr' => ['autocomplete' => 'new-password'],
     ],
     'second_options' => [
-        'label' => 'Confirmez le mot de passe',
+        'label' => 'Confirmez le mot de passe*',
         'attr' => ['autocomplete' => 'new-password'],
     ],
     'invalid_message' => 'Les mots de passe ne correspondent pas.',
@@ -72,8 +72,8 @@ class RegistrationFormType extends AbstractType
                 'widget' => 'single_text',
             ])
             ->add('phoneNumber', TelType::class, [
-                'label' => 'Téléphone',
-                'required' => false,
+                'label' => 'Téléphone*',
+                'required' => true,
             ])
             ->add('address', TextType::class, [
                 'label' => 'Adresse',

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Service;
 use App\Form\ServiceType;
+use App\Repository\IconRepository;
 use App\Repository\ServicesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -53,9 +54,12 @@ final class ServiceController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_service_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Service $service, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Service $service, EntityManagerInterface $entityManager,IconRepository $iconRepository): Response
     {
-        $form = $this->createForm(ServiceType::class, $service);
+        $form = $this->createForm(ServiceType::class, $service, [
+    'icons' => $iconRepository->findBy([], ['iconClass' => 'ASC']),
+]);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
