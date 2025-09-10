@@ -44,6 +44,7 @@ fi
 echo "📦 Mise à jour des dépendances PHP avec Composer..."
 PATH="$HOME/bin:$PATH" php -d memory_limit=-1 "$(which composer)" install --optimize-autoloader --apcu-autoloader
 
+
 # Construire les assets avec NPM
 echo "⚙️  Construction des assets avec NPM..."
 npm install
